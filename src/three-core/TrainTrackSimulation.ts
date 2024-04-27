@@ -1,7 +1,7 @@
 import * as THREE from 'three'
-import type { IThreeView } from './types'
+import type { ITrainTrackSimulation } from './types'
 
-export class ThreeView implements IThreeView {
+export class TrainTrackSimulation implements ITrainTrackSimulation {
   scene: THREE.Scene
   camera: THREE.PerspectiveCamera
   renderer: THREE.WebGLRenderer
@@ -15,11 +15,6 @@ export class ThreeView implements IThreeView {
     this.renderer = new THREE.WebGLRenderer()
   }
 
-  init() {
-    this.renderer.setSize(window.innerWidth, window.innerHeight)
-    this.originElement.appendChild(this.renderer.domElement)
-  }
-
   _createScene() {
     this.scene = new THREE.Scene()
   }
@@ -31,17 +26,28 @@ export class ThreeView implements IThreeView {
   _createRenderer() {
     this.renderer = new THREE.WebGLRenderer()
     this.renderer.setSize(window.innerWidth, window.innerHeight)
+    this.renderer.shadowMap.enabled = true // 设置阴影
+    this.renderer.toneMapping = THREE.NoToneMapping // 设置色调映射
+    this.renderer.toneMappingExposure = 1 // 设置曝光程度
+    // this.renderer.setClearAlpha(0) // 设置背景透明
     this.originElement.appendChild(this.renderer.domElement)
   }
 
-  mount(el: HTMLElement) {
-    this.camera.position.z = 5
+  init() {
+    this._createScene()
+    this._createCamera()
+    this._createRenderer()
 
-    this.originElement = el
+    // 添加环境光
+    this.scene.add(new THREE.AmbientLight(0x404040))
+
+    this.camera.position.z = 5
+    this.renderer.setSize(window.innerWidth, window.innerHeight)
+    this.originElement.appendChild(this.renderer.domElement)
   }
 
   animate() {
-    requestAnimationFrame(this.animate)
+    requestAnimationFrame(this.animate.bind(this))
     this.renderer.render(this.scene, this.camera)
   }
 }

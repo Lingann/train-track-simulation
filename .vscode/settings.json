@@ -9,6 +9,7 @@
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit",
     "source.organizeImports": "never"
   },
 
@@ -51,7 +52,18 @@
     "postcss",
     "vue"
   ],
+  // =============== 为特定的语言配置格式化程序 ===============
   "[scss]": {
+    // 配置scss文件使用prettier + stylelint格式化
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[sass]": {
+    // 配置scss文件使用prettier + stylelint格式化
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
     // 配置scss文件使用prettier + stylelint格式化
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
