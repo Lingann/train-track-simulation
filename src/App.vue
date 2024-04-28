@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { TrainTrackSimulation } from '@/three-core/TrainTrackSimulation'
+import { TrainTrackSimulation } from '@/three/TrainTrackSimulation'
 
 const containerRef = ref<HTMLElement | null>(null)
 
