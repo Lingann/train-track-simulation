@@ -1,53 +1,16 @@
 {
-  // Enable the ESlint flat config support
-  "eslint.experimental.useFlatConfig": true,
-
-  // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
-  "editor.formatOnSave": false,
-
-  // Auto fix
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // 默认格式化工具Prettier - Code formatter
+  "editor.formatOnSave": false, // 默认情况下使用prettier格式化代码 , 每次保存的时候自动格式化Prettier
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit",
-    "source.organizeImports": "never"
+    "source.fixAll.stylelint": "explicit"
   },
-
-  // Silent the stylistic rules in you IDE, but still auto fix them
-  "eslint.rules.customizations": [
-    { "rule": "style/*", "severity": "off" },
-    { "rule": "format/*", "severity": "off" },
-    { "rule": "*-indent", "severity": "off" },
-    { "rule": "*-spacing", "severity": "off" },
-    { "rule": "*-spaces", "severity": "off" },
-    { "rule": "*-order", "severity": "off" },
-    { "rule": "*-dangle", "severity": "off" },
-    { "rule": "*-newline", "severity": "off" },
-    { "rule": "*quotes", "severity": "off" },
-    { "rule": "*semi", "severity": "off" }
-  ],
-
-  // Enable eslint for all supported languages
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml",
-    "toml",
-    "gql",
-    "graphql"
-  ],
   "stylelint.enable": true,
   "stylelint.validate": [
     // 配置stylelint检查的文件类型范围
     "css",
     "scss",
+    "less",
     "sass",
     "postcss",
     "vue"
@@ -68,7 +31,37 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "cSpell.words": ["commitlint", "mysteel", "stylelint", "vitepress", "vitest"],
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    // 配置scss文件使用prettier + stylelint格式化
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "git.enableSmartCommit": true,
+
+  "GitCommitPlugin.MaxSubjectCharacters": 72,
+  "liveServer.settings.port": 5501,
+  "cSpell.words": [
+    "commitlint",
+    "execa",
+    "Pinia",
+    "stylelint",
+    "tailwindcss",
+    "unplugin",
+    "Vitest",
+  ],
   "vitest.commandLine": "pnpm test --",
   "vitest.enable": true
 }

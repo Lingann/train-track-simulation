@@ -1,8 +1,14 @@
+<template>
+  <div class="train-track-simulation">
+    <div ref="containerRef" class="three-container" />
+  </div>
+</template>
+
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { Ref, onMounted, ref } from 'vue'
 import { TrainTrackSimulation } from '@/three/TrainTrackSimulation'
 
-const containerRef = ref<HTMLElement | null>(null)
+const containerRef: Ref<HTMLElement | null> = ref(null)
 
 onMounted(() => {
   const trainTrackSimulation = new TrainTrackSimulation(containerRef.value!)
@@ -11,12 +17,6 @@ onMounted(() => {
   trainTrackSimulation.animate()
 })
 </script>
-
-<template>
-  <div class="train-track-simulation">
-    <div ref="containerRef" class="three-container" />
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .train-track-simulation {
